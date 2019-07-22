@@ -6,11 +6,11 @@ const router = express.Router();
 const { SERVER_USER } = process.env;
 
 router.post("/register", function(req, res, next) {
-  let { username, password } = req.body;
+  let { email, password } = req.body;
   axios({
     method: "POST",
     url: SERVER_USER + "/register",
-    data: { username, password }
+    data: { email, password }
   })
     .then(({ data }) => {
       res.status(200).json(data);
@@ -21,11 +21,11 @@ router.post("/register", function(req, res, next) {
 });
 
 router.post("/login", function(req, res, next) {
-  let { username, password } = req.body;
+  let { email, password } = req.body;
   axios({
     method: "POST",
     url: SERVER_USER + "/login",
-    data: { username, password }
+    data: { email, password }
   })
     .then(({ data }) => {
       res.status(200).json(data);

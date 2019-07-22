@@ -72,4 +72,18 @@ router.get("/user", function(req, res, next) {
   });
 });
 
+router.get("/seeds", async function(req, res, next) {
+  try {
+    let movies = await axios({
+      method: "GET",
+      url: SERVER_MOVIES + "/seeds",
+      headers: req.headers,
+      data: req.body
+    });
+    res.status(200).json(movies.data);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 module.exports = router;

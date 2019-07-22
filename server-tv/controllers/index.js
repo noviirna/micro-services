@@ -52,6 +52,22 @@ class ControllerModel {
       })
       .catch(next);
   }
+
+  static async seeds(req, res, next) {
+    for (let i = 0; i < 10; i++) {
+      await Model.create({
+        userId: req.user._id,
+        title: `Judul Tv ke-${i}`,
+        overview: `Overview Tv ke-${i}`,
+        poster_path:
+          "https://www.openoffice.org/marketing/art/galleries/marketing/posters/poster_A4_OOoFreeYourself.png",
+        popularity: Math.floor(Math.random() * 10) + 1,
+        tag: ["horror", "drama", "mystery"],
+        status: 0
+      });
+    }
+    res.status(200).json({ message: "berhasil seeding tv" });
+  }
 }
 
 module.exports = ControllerModel;
