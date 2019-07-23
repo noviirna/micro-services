@@ -1,6 +1,6 @@
 const gql = require("graphql");
 const axios = require("axios");
-const SeriesObject = require("../object/series");
+const SeriesObject = require("../types/series");
 const { SERVER_TV } = process.env;
 
 module.exports = {

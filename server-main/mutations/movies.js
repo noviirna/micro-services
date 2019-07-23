@@ -1,6 +1,6 @@
 const gql = require("graphql");
 const axios = require("axios");
-const MovieObject = require("../object/movies");
+const MovieObject = require("../types/movies");
 const { SERVER_MOVIES } = process.env;
 
 module.exports = {
