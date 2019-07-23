@@ -1,11 +1,11 @@
 const gql = require("graphql");
 const axios = require("axios");
-const MovieObject = require("../object/movies");
-const { SERVER_MOVIES } = process.env;
+const SeriesObject = require("../object/series");
+const { SERVER_TV } = process.env;
 
 module.exports = {
-  createMovie: {
-    type: MovieObject,
+  createSeries: {
+    type: SeriesObject,
     args: {
       title: { type: gql.GraphQLString },
       overview: { type: gql.GraphQLString },
@@ -24,7 +24,7 @@ module.exports = {
 
       let { data } = await axios({
         method: "POST",
-        url: SERVER_MOVIES,
+        url: SERVER_TV,
         headers: {
           token: args.token
         },
@@ -33,8 +33,8 @@ module.exports = {
       return data;
     }
   },
-  updateMovie: {
-    type: MovieObject,
+  updateSeries: {
+    type: SeriesObject,
     args: {
       id: { type: gql.GraphQLID },
       title: { type: gql.GraphQLString },
@@ -78,7 +78,7 @@ module.exports = {
 
       let { data } = await axios({
         method: "PATCH",
-        url: SERVER_MOVIES + "/" + id,
+        url: SERVER_TV + "/" + id,
         headers: {
           token
         },
@@ -87,8 +87,8 @@ module.exports = {
       return data;
     }
   },
-  deleteMovie: {
-    type: MovieObject,
+  deleteSeries: {
+    type: SeriesObject,
     args: {
       id: { type: gql.GraphQLString },
       token: { type: gql.GraphQLString }
@@ -98,7 +98,7 @@ module.exports = {
 
       let { data } = await axios({
         method: "DELETE",
-        url: SERVER_MOVIES + "/" + id,
+        url: SERVER_TV + "/" + id,
         headers: {
           token
         },
