@@ -6,7 +6,7 @@ const graphqlHTTP = require("express-graphql");
 const port = process.env.PORT || 3000;
 
 // SCHEMA GRAPHQL
-const schema = require("./schemas");
+const schema = require("./schema");
 
 /** KALAU PAKAI EXPERSS BIASA
  * const morgan = require("morgan");
