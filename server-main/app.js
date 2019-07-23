@@ -2,27 +2,39 @@ require("dotenv").config();
 
 const express = require("express");
 const app = express();
+const graphqlHTTP = require("express-graphql");
 const port = process.env.PORT || 3000;
 
-const morgan = require("morgan");
+// SCHEMA GRAPHQL
+const schema = require("./schemas");
 
-const routes = require("./routes/index");
+/** KALAU PAKAI EXPERSS BIASA
+ * const morgan = require("morgan");
+ * const routes = require("./routes/index");
+ * const cors = require("cors");
+ *
+ * app.use(cors());
+ * app.use(morgan("dev"));
+ * app.use(express.json({ limit: "2mb" }));
+ * app.use(express.urlencoded({ extended: false }));
+ * app.use("/", routes);
+ */
 
-const cors = require("cors");
-app.use(cors());
-
-app.use(morgan("dev"));
-app.use(express.json({ limit: "2mb" }));
-app.use(express.urlencoded({ extended: false }));
-
-app.use("/", routes);
+// EXPRESS GRAPH QL ROUTES
+app.use(
+  "/",
+  graphqlHTTP({
+    schema,
+    graphiql: true
+  })
+);
 
 if (process.env.NODE_ENV === "test") {
   module.exports = app;
 } else {
   app.listen(port, () => {
-    console.log("on environment =>", process.env.NODE_ENV);
-    console.log("listening to :", port);
+    console.log("ENV =>", process.env.NODE_ENV);
+    console.log("PORT =>", port);
   });
 }
 

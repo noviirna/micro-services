@@ -40,6 +40,7 @@ if (process.env.NODE_ENV === "test") {
   module.exports = app;
 } else {
   app.listen(port, () => {
+    console.log("server tv series");
     console.log("on environment =>", process.env.NODE_ENV);
     console.log("listening to :", port);
   });

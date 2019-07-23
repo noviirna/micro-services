@@ -16,8 +16,8 @@ const MovieSchema = new Schema({
             title: value,
             userId: this.userId // kalalu mau menunjuk dalam skema yang sama, pakai this
           })
-            .then(track => {
-              if (track) {
+            .then(movies => {
+              if (movies) {
                 return false;
               }
               return true;
