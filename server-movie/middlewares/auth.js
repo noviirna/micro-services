@@ -17,8 +17,10 @@ module.exports = {
   authorization: function(req, res, next) {
     let condition = {
       _id: req.params.id,
-      author: req.user._id
+      userId: req.user._id
     };
+
+    console.log(condition);
 
     Model.findOne(condition)
       .then(result => {

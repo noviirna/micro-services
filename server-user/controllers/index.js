@@ -30,6 +30,15 @@ class ControllerUser {
       })
       .catch(next);
   }
+
+  static addfavoritemovie(req, res, next) {
+  }
+
+  static removefavoritemovie(req, res, next) {}
+
+  static addfavoriteseries(req, res, next) {}
+
+  static removefavoriteseries(req, res, next) {}
 }
 
 module.exports = ControllerUser;

@@ -46,7 +46,7 @@ class ControllerModel {
   }
 
   static update(req, res, next) {
-    Model.findByIdAndUpdate(req.params.id, req.body)
+    Model.findByIdAndUpdate(req.params.id, req.body, { new: true })
       .then(updated => {
         res.status(200).json(updated);
       })

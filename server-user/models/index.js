@@ -39,7 +39,19 @@ const UserSchema = new Schema({
     minlength: [8, "password must consist of 8-16 characters"],
     maxlength: [16, "password must consist of 8-16 characters"],
     required: [true, "password is required"]
-  }
+  },
+  favoriteMovies: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Movie"
+    }
+  ],
+  favoriteSeries: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "TV"
+    }
+  ]
 });
 
 UserSchema.pre("save", function(next) {
