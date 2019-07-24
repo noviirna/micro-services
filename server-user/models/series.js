@@ -16,8 +16,8 @@ const TVSchema = new Schema({
             title: value,
             userId: this.userId // kalalu mau menunjuk dalam skema yang sama, pakai this
           })
-            .then(series => {
-              if (series) {
+            .then(TVs => {
+              if (TVs) {
                 return false;
               }
               return true;
@@ -26,7 +26,7 @@ const TVSchema = new Schema({
               return false;
             });
         },
-        message: "You have already added that movie to your favorite"
+        message: "You have already added that TV to your favorite"
       }
     ]
   },
@@ -35,7 +35,7 @@ const TVSchema = new Schema({
   popularity: Number,
   tag: {
     type: [String],
-    maxlength: [5, "Maximum tag is 5 per movie"]
+    maxlength: [5, "Maximum tag is 5 per TV"]
   },
   status: Number
 });

@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const { hashPassword } = require("../helpers/password");
+const Movie = require("./movie");
+const Series = require("./series");
 
 const UserSchema = new Schema({
   email: {
@@ -43,13 +45,13 @@ const UserSchema = new Schema({
   favoriteMovies: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Movie"
+      ref: Movie
     }
   ],
   favoriteSeries: [
     {
       type: Schema.Types.ObjectId,
-      ref: "TV"
+      ref: Series
     }
   ]
 });
